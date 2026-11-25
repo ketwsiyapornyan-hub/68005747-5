@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Hive Honey - น้ำผึ้งแท้ 100% จากธรรมชาติ</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Prompt & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Prompt', 'Inter', sans-serif;
+        }
+        /* Custom Print Styles สำหรับใบจ่าหน้าพัสดุ */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printLabelArea, #printLabelArea * {
+                visibility: visible;
+            }
+            #printLabelArea {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                border: 2px solid #000 !important;
+                box-shadow: none !important;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-amber-50/60 text-stone-800 antialiased selection:bg-amber-300 selection:text-amber-950">
+
+    <!-- Top Navigation Bar -->
+    <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-200/80 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-2.5 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid fa-jar text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-amber-900 tracking-tight block leading-none">Golden Hive</span>
+                        <span class="text-[11px] font-medium text-amber-600 tracking-wider uppercase">100% Pure Honey</span>
+                    </div>
+                </a>
+
+                <!-- Navigation Tabs / Quick Links -->
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <a href="#products" class="text-sm font-medium text-stone-600 hover:text-amber-600 px-2 py-1.5 transition">สินค้า (2 SKUs)</a>
+                    <a href="#orderFormSection" class="text-sm font-medium text-stone-600 hover:text-amber-600 px-2 py-1.5 transition hidden sm:inline-block">สั่งซื้อสินค้า</a>
+                    <a href="#sheetDashboard" class="relative inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200 hover:bg-emerald-100 px-3 py-1.5 rounded-full transition">
+                        <i class="fa-solid fa-table"></i>
+                        <span>Google Sheet & แพ็คของ</span>
+                        <span id="navOrderBadge" class="bg-emerald-600 text-white text-[10px] px-1.5 py-0.5 rounded-full">2</span>
+                    </a>
+                    <button onclick="openDeployModal()" class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold bg-stone-900 hover:bg-stone-800 text-white px-3.5 py-2 rounded-full shadow-sm transition">
+                        <i class="fa-brands fa-github"></i>
+                        <span class="hidden md:inline">คัดลอกโค้ดส่งงาน</span>
+                        <span class="md:hidden">โค้ด</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Banner -->
+    <header class="relative overflow-hidden bg-gradient-to-br from-amber-500 via-amber-600 to-orange-600 text-white">
+        <!-- Decorative Background Pattern -->
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+                <path fill="currentColor" d="M30 0l25.98 15v30L30 60 4.02 45V15z"/>
+            </svg>
+        </div>
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 relative z-10 text-center">
+            <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm text-amber-50 text-xs sm:text-sm font-medium px-4 py-1.5 rounded-full mb-4 border border-white/25">
+                <i class="fa-solid fa-award text-amber-200"></i> มาตรฐานฟาร์มผึ้งธรรมชาติแท้ 100% ไม่ผสมน้ำตาล
+            </span>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 drop-shadow-sm">
+                ความหวานบริสุทธิ์จากธรรมชาติ<br class="hidden sm:inline"> ส่งตรงถึงมือคุณทุกวัน
+            </h1>
+            <p class="max-w-2xl mx-auto text-amber-100 text-base sm:text-lg mb-8 font-light">
+                คัดสรรน้ำผึ้งคุณภาพเยี่ยม 2 สูตรเอกลักษณ์ บรรจุขวดแก้วสุญญากาศอย่างดี พร้อมระบบจัดการออเดอร์และจัดส่งรวดเร็วทั่วประเทศ
+            </p>
+            <div class="flex flex-wrap justify-center gap-3">
+                <a href="#products" class="bg-white text-amber-800 hover:bg-amber-50 font-bold px-6 py-3 rounded-xl shadow-lg hover:shadow-xl transition flex items-center gap-2">
+                    <i class="fa-solid fa-bag-shopping"></i> เลือกชมสินค้าทั้ง 2 SKUs
+                </a>
+                <a href="#sheetDashboard" class="bg-amber-900/40 hover:bg-amber-900/60 text-white border border-white/30 font-medium px-6 py-3 rounded-xl backdrop-blur-sm transition flex items-center gap-2">
+                    <i class="fa-solid fa-box-open"></i> ดูระบบแพ็คของ & จ่าหน้าพัสดุ
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
+
+        <!-- SECTION 1: สินค้า 2 SKUs -->
+        <section id="products" class="scroll-mt-20">
+            <div class="text-center mb-8">
+                <span class="text-amber-600 font-semibold text-sm tracking-wider uppercase">Our Products</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-stone-900 mt-1">เลือกขนาดและสูตรน้ำผึ้ง (2 SKUs)</h2>
+                <p class="text-stone-500 text-sm mt-2">คลิก "เลือกสินค้านี้" เพื่อระบุจำนวนและกรอกที่อยู่จัดส่งด้านล่าง</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- SKU 1: น้ำผึ้งดอกลำไยแท้ 500g -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 flex flex-col group">
+                    <div class="relative h-64 bg-amber-100 overflow-hidden">
+                        <!-- รูปภาพสินค้า พร้อม Fallback และโฟลเดอร์ images/ ตามโครงสร้าง GitHub -->
+                        <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x600/F59E0B/FFFFFF?text=HNY-001+Longan+Honey+500g'"
+                             alt="น้ำผึ้งดอกลำไยแท้ 500g" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="bg-amber-900/90 backdrop-blur-sm text-amber-100 text-xs font-bold px-3 py-1 rounded-full shadow">
+                                SKU: HNY-001
+                            </span>
+                            <span class="bg-emerald-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                                ขายดี
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded">
+                            Path: ./images/honey-1.jpg
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start gap-2">
+                                <h3 class="text-xl font-bold text-stone-900">น้ำผึ้งดอกลำไยแท้ (ขนาด 500g)</h3>
+                            </div>
+                            <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+                                เก็บเกี่ยวจากสวนลำไยภาคเหนือ มีกลิ่นหอมละมุนเป็นเอกลักษณ์ รสชาติหวานนุ่มนวล ทานง่าย เหมาะสำหรับชงเครื่องดื่ม ชา กาแฟ หรือราดบนขนมปัง
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2 text-xs text-amber-800">
+                                <span class="bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg"><i class="fa-solid fa-check text-amber-600 mr-1"></i>น้ำหนักสุทธิ 500 กรัม</span>
+                                <span class="bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg"><i class="fa-solid fa-check text-amber-600 mr-1"></i>ขวดแก้วฝาซีลอย่างดี</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-stone-400 block">ราคาต่อขวด</span>
+                                <span class="text-2xl font-bold text-amber-600">฿250</span>
+                            </div>
+                            <button type="button" onclick="selectProduct('HNY-001', 'น้ำผึ้งดอกลำไยแท้ 500g', 250)" 
+                                    class="bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> เลือกสินค้านี้
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SKU 2: น้ำผึ้งป่าเดือนห้า 1,000g -->
+                <div class="bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-amber-100 flex flex-col group">
+                    <div class="relative h-64 bg-amber-100 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?auto=format&fit=crop&w=800&q=80" 
+                             onerror="this.src='https://placehold.co/800x600/D97706/FFFFFF?text=HNY-002+Wild+Honey+1000g'"
+                             alt="น้ำผึ้งป่าเดือนห้า 1,000g" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 flex gap-2">
+                            <span class="bg-amber-900/90 backdrop-blur-sm text-amber-100 text-xs font-bold px-3 py-1 rounded-full shadow">
+                                SKU: HNY-002
+                            </span>
+                            <span class="bg-rose-500 text-white text-xs font-semibold px-2.5 py-1 rounded-full shadow">
+                                สุดคุ้ม 1 กก.
+                            </span>
+                        </div>
+                        <div class="absolute bottom-2 right-2 bg-black/60 text-white text-[10px] px-2 py-0.5 rounded">
+                            Path: ./images/honey-2.jpg
+                        </div>
+                    </div>
+
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start gap-2">
+                                <h3 class="text-xl font-bold text-stone-900">น้ำผึ้งป่าเดือนห้า (ขนาด 1,000g)</h3>
+                            </div>
+                            <p class="text-stone-600 text-sm mt-2 leading-relaxed">
+                                น้ำผึ้งป่าธรรมชาติแท้เก็บเกี่ยวช่วงเดือนห้า ความชื้นต่ำ เนื้อน้ำผึ้งเข้มข้น สีอำพันสวย อุดมไปด้วยเกสรดอกไม้ป่าและสารต้านอนุมูลอิสระสูง
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2 text-xs text-amber-800">
+                                <span class="bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg"><i class="fa-solid fa-check text-amber-600 mr-1"></i>น้ำหนักสุทธิ 1,000 กรัม</span>
+                                <span class="bg-amber-50 border border-amber-200 px-2.5 py-1 rounded-lg"><i class="fa-solid fa-check text-amber-600 mr-1"></i>เข้มข้นพิเศษ</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-stone-100 flex items-center justify-between">
+                            <div>
+                                <span class="text-xs text-stone-400 block">ราคาต่อขวด</span>
+                                <span class="text-2xl font-bold text-amber-600">฿450</span>
+                            </div>
+                            <button type="button" onclick="selectProduct('HNY-002', 'น้ำผึ้งป่าเดือนห้า 1,000g', 450)" 
+                                    class="bg-amber-500 hover:bg-amber-600 active:scale-95 text-white font-semibold px-5 py-2.5 rounded-xl shadow-sm hover:shadow transition flex items-center gap-2">
+                                <i class="fa-solid fa-cart-plus"></i> เลือกสินค้านี้
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: ฟอร์มสั่งซื้อสินค้าและกรอกที่อยู่จัดส่ง -->
+        <section id="orderFormSection" class="scroll-mt-20 max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-lg border border-amber-200/80 overflow-hidden">
+                <div class="bg-gradient-to-r from-amber-800 to-amber-900 px-6 py-5 text-white flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                        <h2 class="text-xl sm:text-2xl font-bold flex items-center gap-2">
+                            <i class="fa-solid fa-clipboard-list text-amber-300"></i> แบบฟอร์มสั่งซื้อสินค้า & ที่อยู่จัดส่ง
+                        </h2>
+                        <p class="text-amber-200 text-xs sm:text-sm mt-0.5">ข้อมูลจะถูกบันทึกลง Google Sheet อัตโนมัติเพื่อเตรียมแพ็คและพิมพ์ใบจ่าหน้าพัสดุ</p>
+                    </div>
+                    <span class="bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-xs px-3 py-1 rounded-full flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span> เชื่อมต่อระบบ Google Sheet พร้อมใช้งาน
+                    </span>
+                </div>
+
+                <form id="orderForm" class="p-6 sm:p-8 space-y-6">
+                    <!-- ส่วนเลือกสินค้าและจำนวน -->
+                    <div class="bg-amber-50/80 p-4 sm:p-5 rounded-xl border border-amber-200/80 space-y-4">
+                        <h3 class="font-bold text-amber-900 text-sm uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-jar"></i> 1. รายการสินค้าที่ต้องการสั่งซื้อ
+                        </h3>
+                        <div class="grid sm:grid-cols-3 gap-4">
+                            <div class="sm:col-span-2">
+                                <label for="productSelect" class="block text-sm font-medium text-stone-700 mb-1">เลือกรหัสสินค้า (SKU) *</label>
+                                <select id="productSelect" onchange="calculateTotal()" 
+                                        class="w-full rounded-xl border border-stone-300 bg-white px-3.5 py-2.5 text-stone-800 font-medium focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition">
+                                    <option value="HNY-001|น้ำผึ้งดอกลำไยแท้ 500g|250">[HNY-001] น้ำผึ้งดอกลำไยแท้ 500g — ฿250 / ขวด</option>
+                                    <option value="HNY-002|น้ำผึ้งป่าเดือนห้า 1,000g|450">[HNY-002] น้ำผึ้งป่าเดือนห้า 1,000g — ฿450 / ขวด</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="quantity" class="block text-sm font-medium text-stone-700 mb-1">จำนวน (ขวด) *</label>
+                                <div class="flex items-center">
+                                    <button type="button" onclick="adjustQty(-1)" class="bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold w-10 h-11 rounded-l-xl transition">-</button>
+                                    <input type="number" id="quantity" value="1" min="1" max="99" onchange="calculateTotal()" oninput="calculateTotal()" required
+                                           class="w-full h-11 text-center border-y border-stone-300 font-bold text-stone-900 focus:outline-none">
+                                    <button type="button" onclick="adjustQty(1)" class="bg-stone-200 hover:bg-stone-300 text-stone-700 font-bold w-10 h-11 rounded-r-xl transition">+</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- แถบสรุปยอดเงิน -->
+                        <div class="flex flex-wrap items-center justify-between pt-3 border-t border-amber-200/80 gap-2">
+                            <span class="text-sm text-stone-600">จัดส่งฟรีทั่วประเทศ (แพ็คกันกระแทกอย่างดี)</span>
+                            <div class="text-right">
+                                <span class="text-sm text-stone-600 mr-2">ยอดชำระรวมทั้งสิ้น:</span>
+                                <span id="totalPriceDisplay" class="text-2xl sm:text-3xl font-bold text-amber-700">฿250</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ส่วนกรอกข้อมูลผู้รับสำหรับใบจ่าหน้าพัสดุ -->
+                    <div class="space-y-4">
+                        <h3 class="font-bold text-stone-800 text-sm uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-truck-fast text-amber-600"></i> 2. ข้อมูลผู้รับ (สำหรับพิมพ์ใบจ่าหน้าพัสดุ)
+                        </h3>
+
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="customerName" class="block text-sm font-medium text-stone-700 mb-1">ชื่อ-นามสกุล ผู้รับ *</label>
+                                <input type="text" id="customerName" required placeholder="เช่น นางสาวกานดา รักธรรมชาติ"
+                                       class="w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-stone-700 mb-1">เบอร์โทรศัพท์ติดต่อ *</label>
+                                <input type="tel" id="phone" required placeholder="เช่น 089-123-4567"
+                                       class="w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="address" class="block text-sm font-medium text-stone-700 mb-1">ที่อยู่จัดส่งครบถ้วน (บ้านเลขที่, หมู่/ซอย, ถนน, ตำบล/แขวง, อำเภอ/เขต, จังหวัด, รหัสไปรษณีย์) *</label>
+                            <textarea id="address" rows="3" required placeholder="เช่น 99/12 หมู่ 4 ซอยสุขใจ ถนนพหลโยธิน แขวงลาดยาว เขตจตุจักร กรุงเทพฯ 10900"
+                                      class="w-full rounded-xl border border-stone-300 px-3.5 py-2.5 text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="note" class="block text-sm font-medium text-stone-700 mb-1">หมายเหตุถึงพนักงานแพ็คสินค้า (ถ้ามี)</label>
+                            <input type="text" id="note" placeholder="เช่น ฝากไว้ที่ป้อมยาม, ขอห่อบับเบิ้ลหนาพิเศษ"
+                                   class="w-full rounded-xl border border-stone-300 px-3.5 py-2 text-sm text-stone-800 focus:border-amber-500 focus:ring-2 focus:ring-amber-200 outline-none transition">
+                        </div>
+                    </div>
+
+                    <!-- การตั้งค่า Google Apps Script URL จริง (Optional สำหรับเชื่อมต่อ Sheet จริง) -->
+                    <details class="bg-stone-50 border border-stone-200 rounded-xl p-3.5 text-xs text-stone-600">
+                        <summary class="font-semibold text-stone-700 cursor-pointer select-none flex items-center justify-between">
+                            <span><i class="fa-solid fa-link text-emerald-600 mr-1.5"></i> ตั้งค่าลิงก์ Google Apps Script Web App URL จริง (คลิกเพื่อใส่ลิงก์ของคุณ)</span>
+                            <span class="text-amber-600 underline">ดูวิธีทำ</span>
+                        </summary>
+                        <div class="mt-3 pt-3 border-t border-stone-200 space-y-2">
+                            <p>หากคุณสร้าง Google Sheet และ Deploy Apps Script เรียบร้อยแล้ว สามารถนำ Web App URL มาวางที่นี่เพื่อส่งข้อมูลเข้า Google Sheet จริงได้ทันที (ระบบจะบันทึกในตารางจำลองด้านล่างควบคู่ไปด้วยเสมอ):</p>
+                            <input type="url" id="liveScriptUrl" placeholder="https://script.google.com/macros/s/AKfycbx.../exec" 
+                                   class="w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-xs font-mono text-stone-800">
+                        </div>
+                    </details>
+
+                    <!-- ปุ่มกดยืนยันการสั่งซื้อ -->
+                    <button type="submit" id="submitBtn"
+                            class="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 active:scale-[0.99] text-white font-bold py-3.5 px-6 rounded-xl text-lg shadow-md hover:shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-circle-check"></i> ยืนยันการสั่งซื้อและบันทึกข้อมูล
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- SECTION 3: ระบบหลังบ้านจำลอง Google Sheet & หยิบสินค้า/แพ็คสินค้า/พิมพ์ใบจ่าหน้าพัสดุ -->
+        <section id="sheetDashboard" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl shadow-lg border border-emerald-200 overflow-hidden">
+                <!-- Header สไตล์ Google Sheets -->
+                <div class="bg-emerald-700 px-6 py-5 text-white flex flex-wrap items-center justify-between gap-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-11 h-11 rounded-xl bg-white/15 flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-file-excel"></i>
+                        </div>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h2 class="text-xl font-bold">Google Sheet: ฐานข้อมูลออเดอร์ & จ่าหน้าพัสดุ</h2>
+                                <span class="bg-emerald-900/60 text-emerald-100 text-[11px] px-2.5 py-0.5 rounded-full border border-emerald-400/30">Live Sync</span>
+                            </div>
+                            <p class="text-emerald-100 text-xs sm:text-sm mt-0.5">
+                                ใช้สำหรับฝ่ายคลังสินค้าตรวจสอบ SKU เพื่อหยิบสินค้า (Pick) แพ็คลงกล่อง (Pack) และพิมพ์ใบจ่าหน้าพัสดุ (Print Label)
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+                        <button type="button" onclick="exportToCSV()" class="bg-white/15 hover:bg-white/25 text-white text-xs sm:text-sm font-medium px-3.5 py-2 rounded-lg transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-download"></i> ส่งออกไฟล์ .CSV
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Summary Stats Bar (สรุปจำนวนสินค้าแต่ละ SKU ที่ต้องหยิบ) -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 sm:p-6 bg-emerald-50/60 border-b border-emerald-100">
+                    <div class="bg-white p-3.5 rounded-xl border border-emerald-100 shadow-sm">
+                        <span class="text-xs text-stone-500 block">ออเดอร์ทั้งหมด</span>
+                        <span id="statTotalOrders" class="text-2xl font-bold text-stone-800">2</span>
+                        <span class="text-xs text-emerald-600 ml-1">รายการ</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-amber-100 shadow-sm">
+                        <span class="text-xs text-stone-500 block">ต้องหยิบ HNY-001 (500g)</span>
+                        <span id="statSku1" class="text-2xl font-bold text-amber-600">2</span>
+                        <span class="text-xs text-stone-500 ml-1">ขวด</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-amber-100 shadow-sm">
+                        <span class="text-xs text-stone-500 block">ต้องหยิบ HNY-002 (1,000g)</span>
+                        <span id="statSku2" class="text-2xl font-bold text-amber-700">1</span>
+                        <span class="text-xs text-stone-500 ml-1">ขวด</span>
+                    </div>
+                    <div class="bg-white p-3.5 rounded-xl border border-emerald-100 shadow-sm">
+                        <span class="text-xs text-stone-500 block">ยอดขายรวม</span>
+                        <span id="statRevenue" class="text-2xl font-bold text-emerald-700">฿950</span>
+                    </div>
+                </div>
+
+                <!-- ตารางข้อมูลเหมือนใน Google Sheet -->
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-stone-100 text-stone-600 text-xs uppercase border-b border-stone-200">
+                                <th class="py-3.5 px-4 font-semibold">Order ID / วันที่</th>
+                                <th class="py-3.5 px-4 font-semibold">รหัส SKU (หยิบสินค้า)</th>
+                                <th class="py-3.5 px-4 font-semibold">รายการ & จำนวน</th>
+                                <th class="py-3.5 px-4 font-semibold">ยอดรวม</th>
+                                <th class="py-3.5 px-4 font-semibold">ผู้รับ & ที่อยู่จ่าหน้าพัสดุ</th>
+                                <th class="py-3.5 px-4 font-semibold text-center">สถานะแพ็ค</th>
+                                <th class="py-3.5 px-4 font-semibold text-right">จัดการ / พิมพ์ใบปะหน้า</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody" class="divide-y divide-stone-200 text-sm">
+                            <!-- ข้อมูลออเดอร์จะถูก Render ด้วย JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-stone-400 py-8 mt-16 border-t border-stone-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+            <div class="flex items-center gap-2 text-stone-200 font-semibold">
+                <i class="fa-solid fa-jar text-amber-500"></i>
+                <span>Golden Hive Honey — น้ำผึ้งแท้ 100% จากธรรมชาติ</span>
+            </div>
+            <p class="text-center sm:text-right">
+                โครงสร้างพร้อมอัปโหลดขึ้น GitHub (แยกโฟลเดอร์ <code class="text-amber-400">images/</code>) และ Deploy บน Vercel
+            </p>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 1: พิมพ์ใบจ่าหน้าพัสดุ (Shipping Label & Packing Slip)           -->
+    <!-- ===================================================================== -->
+    <div id="labelModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden animate-fade-in">
+            <!-- Modal Header -->
+            <div class="bg-stone-800 text-white px-5 py-3.5 flex items-center justify-between no-print">
+                <h3 class="font-bold flex items-center gap-2">
+                    <i class="fa-solid fa-print text-amber-400"></i> ใบหยิบสินค้าและจ่าหน้าพัสดุ (Shipping Label)
+                </h3>
+                <button onclick="closeLabelModal()" class="text-stone-400 hover:text-white transition">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <!-- พื้นที่ใบจ่าหน้าพัสดุ (ส่วนนี้จะถูกสั่งพิมพ์) -->
+            <div class="p-6 bg-stone-50">
+                <div id="printLabelArea" class="bg-white border-2 border-stone-900 rounded-xl p-5 space-y-4 shadow-sm">
+                    <!-- หัวใบปะหน้า -->
+                    <div class="flex justify-between items-start border-b-2 border-stone-900 pb-3">
+                        <div>
+                            <div class="font-bold text-lg text-stone-900 flex items-center gap-1.5">
+                                <i class="fa-solid fa-jar"></i> GOLDEN HIVE HONEY
+                            </div>
+                            <p class="text-xs text-stone-600 mt-0.5">ผู้ส่ง: ฟาร์มผึ้งโกลเด้นไฮฟ์ จ.เชียงใหม่ 50000 (โทร. 080-000-9999)</p>
+                        </div>
+                        <div class="text-right">
+                            <span id="lblOrderId" class="bg-stone-900 text-white font-mono text-xs font-bold px-2.5 py-1 rounded">ORD-001</span>
+                            <p id="lblDate" class="text-[11px] text-stone-500 mt-1">25/11/2026</p>
+                        </div>
+                    </div>
+
+                    <!-- ส่วนผู้รับ (ตัวใหญ่ชัดเจน) -->
+                    <div class="bg-amber-50/50 border border-stone-300 rounded-lg p-3.5">
+                        <span class="text-xs font-bold uppercase tracking-wider text-stone-500 block mb-1">กรุณาส่ง (TO / RECEIVER):</span>
+                        <p id="lblCustomerName" class="text-lg font-bold text-stone-900">ชื่อผู้รับ</p>
+                        <p id="lblPhone" class="text-sm font-semibold text-stone-800 mt-0.5">โทร: 08x-xxx-xxxx</p>
+                        <p id="lblAddress" class="text-sm text-stone-800 mt-1.5 leading-relaxed">ที่อยู่จัดส่ง...</p>
+                    </div>
+
+                    <!-- ส่วนรายการสินค้าสำหรับพนักงานหยิบและแพ็ค (Picking & Packing List) -->
+                    <div class="border-t-2 border-dashed border-stone-400 pt-3">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-xs font-bold uppercase text-stone-700">
+                                <i class="fa-solid fa-boxes-stacked mr-1"></i> รายการหยิบสินค้า (PICKING LIST)
+                            </span>
+                            <span class="text-[11px] bg-stone-200 text-stone-800 px-2 py-0.5 rounded font-semibold">ระวังแตก (FRAGILE)</span>
+                        </div>
+                        <div class="bg-stone-100 rounded-lg p-3 flex items-center justify-between">
+                            <div>
+                                <span id="lblSku" class="font-mono font-bold text-xs bg-amber-500 text-white px-2 py-0.5 rounded">HNY-001</span>
+                                <span id="lblProductName" class="font-bold text-sm text-stone-900 ml-1.5">น้ำผึ้งดอกลำไยแท้ 500g</span>
+                                <p id="lblNote" class="text-xs text-rose-600 mt-1 hidden"></p>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-stone-500 block">จำนวน</span>
+                                <span id="lblQty" class="text-xl font-bold text-stone-900">1 ขวด</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Barcode จำลอง -->
+                    <div class="pt-2 text-center">
+                        <div class="inline-block border border-stone-300 px-6 py-1.5 rounded bg-white">
+                            <div class="tracking-[0.25em] font-mono text-xs font-bold text-stone-800" id="lblBarcode">*TH-HNY-001-2026*</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer Buttons -->
+            <div class="bg-white px-6 py-4 border-t border-stone-200 flex flex-wrap justify-end gap-3 no-print">
+                <button type="button" onclick="markAsPackedFromModal()" id="btnMarkPacked"
+                        class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 font-semibold px-4 py-2 rounded-xl text-sm transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-check-double"></i> ยืนยันแพ็คสินค้าแล้ว
+                </button>
+                <button type="button" onclick="window.print()"
+                        class="bg-stone-900 hover:bg-stone-800 text-white font-semibold px-5 py-2 rounded-xl text-sm shadow transition flex items-center gap-2">
+                    <i class="fa-solid fa-print"></i> สั่งพิมพ์ใบจ่าหน้า
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 2: คัดลอกโค้ดสำหรับส่งงาน GitHub, Google Apps Script & Vercel   -->
+    <!-- ===================================================================== -->
+    <div id="deployModal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+            <div class="bg-stone-900 text-white px-6 py-4 flex items-center justify-between">
+                <h3 class="font-bold text-lg flex items-center gap-2">
+                    <i class="fa-brands fa-github text-amber-400"></i> คู่มือ & คัดลอกโค้ดสำหรับ GitHub + Google Sheet + Vercel
+                </h3>
+                <button onclick="closeDeployModal()" class="text-stone-400 hover:text-white">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-5 text-sm text-stone-700">
+                <!-- โครงสร้างโฟลเดอร์ GitHub -->
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                    <h4 class="font-bold text-amber-900 mb-2">1. โครงสร้างโฟลเดอร์ใน GitHub (ตามโจทย์เป๊ะ)</h4>
+                    <pre class="bg-stone-900 text-amber-300 p-3 rounded-lg text-xs font-mono overflow-x-auto">honey-shop/
+├── index.html          <-- ไฟล์หน้าเว็บนี้
+└── images/             <-- โฟลเดอร์เก็บรูปแยกต่างหากใน GitHub
+    ├── honey-1.jpg     <-- รูปน้ำผึ้ง HNY-001 (500g)
+    └── honey-2.jpg     <-- รูปน้ำผึ้ง HNY-002 (1,000g)</pre>
+                </div>
+
+                <!-- โค้ด Google Apps Script -->
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-bold text-emerald-900">2. โค้ด Google Apps Script (วางใน Google Sheet > ส่วนขยาย)</h4>
+                        <button type="button" onclick="copyAppsScript()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3 py-1.5 rounded-lg transition">
+                            <i class="fa-regular fa-copy mr-1"></i> คัดลอก Script
+                        </button>
+                    </div>
+                    <textarea id="appsScriptCode" readonly rows="8" class="w-full bg-stone-900 text-emerald-300 p-3 rounded-lg text-xs font-mono">function doPost(e) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var data = JSON.parse(e.postData.contents);
+  sheet.appendRow([
+    new Date().toLocaleString("th-TH"),
+    data.sku,
+    data.productName,
+    data.totalPrice,
+    data.customerName,
+    "'" + data.phone,
+    data.address
+  ]);
+  return ContentService.createTextOutput(JSON.stringify({"status": "success"}))
+    .setMimeType(ContentService.MimeType.JSON);
+}</textarea>
+                    <p class="text-xs text-emerald-800 mt-2">
+                        * กด <strong>Deploy > New deployment > Web app</strong> เลือกสิทธิ์เป็น <strong>Anyone (ทุกคน)</strong> แล้วนำ URL มาใส่ในช่องตั้งค่าหน้าเว็บได้เลย
+                    </p>
+                </div>
+            </div>
+
+            <div class="bg-stone-100 px-6 py-3.5 border-t border-stone-200 flex justify-end">
+                <button type="button" onclick="closeDeployModal()" class="bg-stone-800 text-white font-semibold px-5 py-2 rounded-xl text-sm">ปิดหน้าต่าง</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Toast Notification (แทน alert() ตามกฎความปลอดภัย) -->
+    <div id="toastBox" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-stone-900 text-white px-5 py-3.5 rounded-xl shadow-2xl border border-stone-700 flex items-center gap-3 max-w-sm">
+            <i id="toastIcon" class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+            <div>
+                <p id="toastTitle" class="font-bold text-sm">สำเร็จ!</p>
+                <p id="toastMessage" class="text-xs text-stone-300 mt-0.5">บันทึกข้อมูลเรียบร้อยแล้ว</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT LOGIC                                                      -->
+    <!-- ===================================================================== -->
+    <script>
+        // ข้อมูลออเดอร์ตัวอย่างเริ่มต้น (จำลองข้อมูลใน Google Sheet เพื่อให้เห็นภาพการหยิบสินค้าและจ่าหน้าพัสดุทันที)
+        let ordersData = [
+            {
+                id: 'ORD-001',
+                date: '25/11/2026 17:45',
+                sku: 'HNY-001',
+                productName: 'น้ำผึ้งดอกลำไยแท้ 500g',
+                qty: 2,
+                totalPrice: 500,
+                customerName: 'คุณวิภาวี สุขสวัสดิ์',
+                phone: '081-456-7890',
+                address: '128/45 หมู่บ้านพฤกษา ถ.งามวงศ์วาน ต.บางเขน อ.เมือง จ.นนทบุรี 11000',
+                note: 'ห่อกันกระแทกหนาๆ นะคะ',
+                packed: false
+            },
+            {
+                id: 'ORD-002',
+                date: '25/11/2026 18:02',
+                sku: 'HNY-002',
+                productName: 'น้ำผึ้งป่าเดือนห้า 1,000g',
+                qty: 1,
+                totalPrice: 450,
+                customerName: 'คุณณัฐพล วงศ์สุวรรณ',
+                phone: '089-987-6543',
+                address: '55/9 ซอยสุขุมวิท 39 แขวงคลองตันเหนือ เขตวัฒนา กรุงเทพฯ 10110',
+                note: '',
+                packed: true
+            }
+        ];
+
+        let currentModalOrderId = null;
+
+        // โหลดข้อมูลจาก LocalStorage (ถ้ามี) เมื่อเปิดหน้าเว็บ
+        document.addEventListener('DOMContentLoaded', () => {
+            try {
+                const savedOrders = localStorage.getItem('golden_hive_orders');
+                if (savedOrders) {
+                    ordersData = JSON.parse(savedOrders);
+                }
+            } catch (e) {
+                console.warn('LocalStorage unavailable:', e);
+            }
+            renderOrdersTable();
+            calculateTotal();
+        });
+
+        // ฟังก์ชันแสดงการแจ้งเตือนแบบ Toast (ไม่ใช้ alert)
+        function showToast(title, message, isError = false) {
+            const toast = document.getElementById('toastBox');
+            const icon = document.getElementById('toastIcon');
+            document.getElementById('toastTitle').innerText = title;
+            document.getElementById('toastMessage').innerText = message;
+
+            if (isError) {
+                icon.className = 'fa-solid fa-circle-exclamation text-rose-400 text-xl';
+            } else {
+                icon.className = 'fa-solid fa-circle-check text-emerald-400 text-xl';
+            }
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 4000);
+        }
+
+        // 1. เลือกสินค้าจากการ์ดด้านบน แล้วเลื่อนลงไปที่ฟอร์มสั่งซื้ออัตโนมัติ
+        function selectProduct(sku, name, price) {
+            const select = document.getElementById('productSelect');
+            select.value = `${sku}|${name}|${price}`;
+            calculateTotal();
+
+            const formSection = document.getElementById('orderFormSection');
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // ไฮไลต์ช่องเลือกสินค้าให้ผู้ใช้สังเกตเห็น
+            select.classList.add('ring-4', 'ring-amber-300');
+            setTimeout(() => select.classList.remove('ring-4', 'ring-amber-300'), 1000);
+        }
+
+        // ปรับเพิ่ม/ลดจำนวนขวด
+        function adjustQty(delta) {
+            const qtyInput = document.getElementById('quantity');
+            let current = parseInt(qtyInput.value) || 1;
+            current = Math.max(1, Math.min(99, current + delta));
+            qtyInput.value = current;
+            calculateTotal();
+        }
+
+        // 2. คำนวณราคารวมอัตโนมัติ
+        function calculateTotal() {
+            const val = document.getElementById('productSelect').value.split('|');
+            const unitPrice = parseInt(val[2]) || 0;
+            const qty = Math.max(1, parseInt(document.getElementById('quantity').value) || 1);
+            const total = unitPrice * qty;
+
+            document.getElementById('totalPriceDisplay').innerText = '฿' + total.toLocaleString();
+        }
+
+        // 3. บันทึกคำสั่งซื้อ (จำลองเข้า Google Sheet + ส่งเข้า Google Sheet จริงหากตั้งค่า URL ไว้)
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const originalBtnHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> กำลังบันทึกข้อมูลลง Google Sheet...';
+
+            const productParts = document.getElementById('productSelect').value.split('|');
+            const sku = productParts[0];
+            const productName = productParts[1];
+            const unitPrice = parseInt(productParts[2]);
+            const qty = parseInt(document.getElementById('quantity').value) || 1;
+            const totalPrice = unitPrice * qty;
+
+            const customerName = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const address = document.getElementById('address').value.trim();
+            const note = document.getElementById('note').value.trim();
+
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('th-TH') + ' ' + now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+            const newOrderId = 'ORD-' + String(ordersData.length + 1).padStart(3, '0');
+
+            const newOrder = {
+                id: newOrderId,
+                date: formattedDate,
+                sku: sku,
+                productName: productName,
+                qty: qty,
+                totalPrice: totalPrice,
+                customerName: customerName,
+                phone: phone,
+                address: address,
+                note: note,
+                packed: false
+            };
+
+            // หากผู้ใช้ใส่ Google Apps Script URL จริงไว้ ให้ยิงข้อมูลไปที่ Google Sheet จริงด้วย
+            const liveScriptUrl = document.getElementById('liveScriptUrl').value.trim();
+            if (liveScriptUrl && liveScriptUrl.startsWith('https://script.google.com/')) {
+                try {
+                    await fetch(liveScriptUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            sku: sku,
+                            productName: `${productName} (จำนวน ${qty} ขวด)`,
+                            totalPrice: totalPrice,
+                            customerName: customerName,
+                            phone: phone,
+                            address: address
+                        })
+                    });
+                } catch (err) {
+                    console.error('Error sending to live Google Sheet:', err);
+                }
+            }
+
+            // เพิ่มออเดอร์ใหม่ไว้บนสุดของตาราง Dashboard
+            ordersData.unshift(newOrder);
+            saveOrders();
+            renderOrdersTable();
+
+            // รีเซ็ตฟอร์ม
+            document.getElementById('orderForm').reset();
+            if (liveScriptUrl) document.getElementById('liveScriptUrl').value = liveScriptUrl;
+            calculateTotal();
+
+            btn.disabled = false;
+            btn.innerHTML = originalBtnHtml;
+
+            showToast('สั่งซื้อสำเร็จ! (' + newOrderId + ')', 'บันทึกข้อมูลลงตารางเตรียมแพ็คและจ่าหน้าพัสดุแล้ว');
+
+            // เลื่อนลงไปดูรายการในตาราง Google Sheet ทันที
+            setTimeout(() => {
+                document.getElementById('sheetDashboard').scrollIntoView({ behavior: 'smooth' });
+            }, 600);
+        });
+
+        // บันทึกลง LocalStorage
+        function saveOrders() {
+            try {
+                localStorage.setItem('golden_hive_orders', JSON.stringify(ordersData));
+            } catch (e) {
+                console.warn('Could not save to localStorage');
+            }
+        }
+
+        // Render ตารางรายการสั่งซื้อ และอัปเดตตัวเลขสรุปการหยิบสินค้า (Picking Stats)
+        function renderOrdersTable() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = '';
+
+            let totalSku1 = 0;
+            let totalSku2 = 0;
+            let totalRevenue = 0;
+
+            ordersData.forEach(order => {
+                if (order.sku === 'HNY-001') totalSku1 += order.qty;
+                if (order.sku === 'HNY-002') totalSku2 += order.qty;
+                totalRevenue += order.totalPrice;
+
+                const skuBadgeColor = order.sku === 'HNY-001' 
+                    ? 'bg-amber-100 text-amber-800 border-amber-300' 
+                    : 'bg-orange-100 text-orange-900 border-orange-300';
+
+                const statusBadge = order.packed
+                    ? `<button onclick="togglePackStatus('${order.id}')" class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 hover:bg-emerald-200 text-xs font-semibold px-2.5 py-1 rounded-full transition" title="คลิกเพื่อเปลี่ยนสถานะ">
+                         <i class="fa-solid fa-check-circle"></i> แพ็คแล้ว
+                       </button>`
+                    : `<button onclick="togglePackStatus('${order.id}')" class="inline-flex items-center gap-1 bg-amber-100 text-amber-800 hover:bg-amber-200 text-xs font-semibold px-2.5 py-1 rounded-full transition" title="คลิกเพื่อยืนยันการแพ็ค">
+                         <i class="fa-solid fa-clock"></i> รอหยิบ/แพ็ค
+                       </button>`;
+
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-amber-50/40 transition';
+                row.innerHTML = `
+                    <td class="py-3.5 px-4 align-top whitespace-nowrap">
+                        <span class="font-mono font-bold text-stone-800 block">${order.id}</span>
+                        <span class="text-xs text-stone-400">${order.date}</span>
+                    </td>
+                    <td class="py-3.5 px-4 align-top whitespace-nowrap">
+                        <span class="font-mono text-xs font-bold px-2.5 py-1 rounded-md border ${skuBadgeColor}">
+                            ${order.sku}
+                        </span>
+                    </td>
+                    <td class="py-3.5 px-4 align-top">
+                        <span class="font-semibold text-stone-800 block">${order.productName}</span>
+                        <span class="text-xs font-bold text-amber-700">จำนวน: ${order.qty} ขวด</span>
+                    </td>
+                    <td class="py-3.5 px-4 align-top whitespace-nowrap font-bold text-stone-800">
+                        ฿${order.totalPrice.toLocaleString()}
+                    </td>
+                    <td class="py-3.5 px-4 align-top max-w-xs">
+                        <p class="font-bold text-stone-900">${order.customerName} <span class="font-normal text-stone-500 text-xs">(${order.phone})</span></p>
+                        <p class="text-xs text-stone-600 mt-0.5 line-clamp-2">${order.address}</p>
+                        ${order.note ? `<span class="inline-block mt-1 text-[11px] text-rose-600 bg-rose-50 px-2 py-0.5 rounded">หมายเหตุ: ${order.note}</span>` : ''}
+                    </td>
+                    <td class="py-3.5 px-4 align-top text-center whitespace-nowrap">
+                        ${statusBadge}
+                    </td>
+                    <td class="py-3.5 px-4 align-top text-right whitespace-nowrap">
+                        <button type="button" onclick="openLabelModal('${order.id}')" 
+                                class="inline-flex items-center gap-1.5 bg-stone-900 hover:bg-amber-600 text-white text-xs font-semibold px-3 py-2 rounded-lg shadow-sm transition">
+                            <i class="fa-solid fa-print"></i> ใบจ่าหน้าพัสดุ
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            // อัปเดตตัวเลขสถิติ
+            document.getElementById('navOrderBadge').innerText = ordersData.length;
+            document.getElementById('statTotalOrders').innerText = ordersData.length;
+            document.getElementById('statSku1').innerText = totalSku1;
+            document.getElementById('statSku2').innerText = totalSku2;
+            document.getElementById('statRevenue').innerText = '฿' + totalRevenue.toLocaleString();
+        }
+
+        // สลับสถานะการแพ็คสินค้า
+        function togglePackStatus(orderId) {
+            const order = ordersData.find(o => o.id === orderId);
+            if (order) {
+                order.packed = !order.packed;
+                saveOrders();
+                renderOrdersTable();
+                showToast('อัปเดตสถานะแล้ว', `ออเดอร์ ${order.id} : ${order.packed ? 'แพ็คสินค้าเรียบร้อย' : 'เปลี่ยนกลับเป็นรอแพ็ค'}`);
+            }
+        }
+
+        // เปิด Modal พิมพ์ใบจ่าหน้าพัสดุ
+        function openLabelModal(orderId) {
+            const order = ordersData.find(o => o.id === orderId);
+            if (!order) return;
+
+            currentModalOrderId = orderId;
+            document.getElementById('lblOrderId').innerText = order.id;
+            document.getElementById('lblDate').innerText = order.date;
+            document.getElementById('lblCustomerName').innerText = order.customerName;
+            document.getElementById('lblPhone').innerText = 'โทร: ' + order.phone;
+            document.getElementById('lblAddress').innerText = order.address;
+            document.getElementById('lblSku').innerText = order.sku;
+            document.getElementById('lblProductName').innerText = order.productName;
+            document.getElementById('lblQty').innerText = order.qty + ' ขวด';
+            document.getElementById('lblBarcode').innerText = `*TH-${order.sku}-${order.id}*`;
+
+            const noteEl = document.getElementById('lblNote');
+            if (order.note) {
+                noteEl.innerText = '* หมายเหตุ: ' + order.note;
+                noteEl.classList.remove('hidden');
+            } else {
+                noteEl.classList.add('hidden');
+            }
+
+            document.getElementById('labelModal').classList.remove('hidden');
+        }
+
+        function closeLabelModal() {
+            document.getElementById('labelModal').classList.add('hidden');
+            currentModalOrderId = null;
+        }
+
+        function markAsPackedFromModal() {
+            if (!currentModalOrderId) return;
+            const order = ordersData.find(o => o.id === currentModalOrderId);
+            if (order && !order.packed) {
+                order.packed = true;
+                saveOrders();
+                renderOrdersTable();
+                showToast('แพ็คสินค้าสำเร็จ!', `ยืนยันการแพ็คออเดอร์ ${order.id} เรียบร้อยแล้ว`);
+            }
+            closeLabelModal();
+        }
+
+        // ส่งออกข้อมูลเป็นไฟล์ CSV (เปิดใน Excel / Google Sheet ได้ทันที)
+        function exportToCSV() {
+            let csvContent = "\uFEFFOrder ID,วันที่สั่งซื้อ,SKU,ชื่อสินค้า,จำนวน,ราคารวม,ชื่อผู้รับ,เบอร์โทร,ที่อยู่จัดส่ง,สถานะแพ็ค\n";
+            ordersData.forEach(o => {
+                const row = [
+                    o.id,
+                    `"${o.date}"`,
+                    o.sku,
+                    `"${o.productName}"`,
+                    o.qty,
+                    o.totalPrice,
+                    `"${o.customerName}"`,
+                    `"${o.phone}"`,
+                    `"${o.address.replace(/"/g, '""')}"`,
+                    o.packed ? 'แพ็คแล้ว' : 'รอแพ็ค'
+                ].join(",");
+                csvContent += row + "\n";
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", "Golden_Hive_Orders.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('ดาวน์โหลดสำเร็จ', 'ส่งออกไฟล์ Golden_Hive_Orders.csv เรียบร้อย');
+        }
+
+        // เปิด-ปิด Modal คู่มือและโค้ด Deploy
+        function openDeployModal() {
+            document.getElementById('deployModal').classList.remove('hidden');
+        }
+        function closeDeployModal() {
+            document.getElementById('deployModal').classList.add('hidden');
+        }
+
+        // คัดลอกโค้ด Google Apps Script
+        function copyAppsScript() {
+            const textarea = document.getElementById('appsScriptCode');
+            textarea.select();
+            document.execCommand('copy');
+            showToast('คัดลอกโค้ดแล้ว!', 'นำโค้ดไปวางใน Google Apps Script ได้เลย');
+        }
+    </script>
+</body>
+</html>
